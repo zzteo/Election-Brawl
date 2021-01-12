@@ -238,8 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92bc610a329e5714f9ed33f8d94fac13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  specialAttackP1: {fileID: 0}
-  specialAttackP2: {fileID: 0}
+  readyScript: {fileID: 0}
   player1Ready: 0
   player2Ready: 0
   arenaAnim: {fileID: 0}

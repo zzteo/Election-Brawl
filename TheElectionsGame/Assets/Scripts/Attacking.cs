@@ -30,6 +30,10 @@ public class Attacking : MonoBehaviour
     [SerializeField] ParticleSystem hitUlt;
     [SerializeField] ParticleSystem hitHeavy;
     [SerializeField] Transform hitPoint;
+
+
+    [SerializeField] AudioSource[] audio;
+    //[1]=lightAttack12; [2]= lightAttack3; [3]= hardAttack;
     public int GetPlayerIndex()
     {
         return playerIndex;
@@ -95,6 +99,8 @@ public class Attacking : MonoBehaviour
             player2Anim.SetTrigger("gotHit");        
             player1SpecialAttack.AddSpecialBarPoints(20);
             Instantiate(hit, hitPoint.transform);
+            //play audio
+            audio[0].Play();
 
         }
         else if (playerIndex == 1 && collisionWithEnemy == true && GameObject.FindGameObjectWithTag("player1Input").GetComponent<PlayerInputHandler>().isGuarding == false)
@@ -103,6 +109,7 @@ public class Attacking : MonoBehaviour
             playerAnim.SetTrigger("gotHit");         
             player2SpecialAttack.AddSpecialBarPoints(20);
             Instantiate(hit, hitPoint.transform);
+            audio[0].Play();
         }
 
         else
@@ -121,6 +128,16 @@ public class Attacking : MonoBehaviour
                 playerAnim.SetTrigger("gotHit");
                 player2SpecialAttack.AddSpecialBarPoints(20);
                 Instantiate(hit, hitPoint.transform);
+            }
+            else if (playerIndex == 0 && collisionWithEnemy == true && GameObject.FindGameObjectWithTag("player2Input").GetComponent<PlayerInputHandler>().isGuarding == true)
+            {
+                //play punch blocked sound
+                audio[3].Play();
+            }
+            else if (playerIndex == 1 && collisionWithEnemy == true && GameObject.FindGameObjectWithTag("player1Input").GetComponent<PlayerInputHandler>().isGuarding == true)
+            {
+                //play punch blocked sound
+                audio[3].Play();
             }
         }
     }
@@ -145,6 +162,8 @@ public class Attacking : MonoBehaviour
                 player2Anim.SetTrigger("gotHit");
             player1SpecialAttack.AddSpecialBarPoints(20);
             Instantiate(hit, hitPoint.transform);
+            //play audio
+            audio[0].Play();
         }
             else if (playerIndex == 1 && collisionWithEnemy == true && GameObject.FindGameObjectWithTag("player1Input").GetComponent<PlayerInputHandler>().isGuarding == false)
             {
@@ -152,7 +171,15 @@ public class Attacking : MonoBehaviour
                 playerAnim.SetTrigger("gotHit");
             player2SpecialAttack.AddSpecialBarPoints(20);
             Instantiate(hit, hitPoint.transform);
+            audio[0].Play();
         }
+        else if (playerIndex == 0 && collisionWithEnemy == true && GameObject.FindGameObjectWithTag("player2Input").GetComponent<PlayerInputHandler>().isGuarding == true)
+        {
+            //play punch blocked sound
+            audio[3].Play();
+        }
+       
+
         else
         {
             if (playerIndex == 0 && collisionWithEnemy == true && GameObject.FindGameObjectWithTag("player2Input").GetComponent<PlayerInputHandler>().isGuarding == false)
@@ -168,6 +195,11 @@ public class Attacking : MonoBehaviour
                 playerAnim.SetTrigger("gotHit");
                 player2SpecialAttack.AddSpecialBarPoints(20);
                 Instantiate(hit, hitPoint.transform);
+            }
+            else if (playerIndex == 1 && collisionWithEnemy == true && GameObject.FindGameObjectWithTag("player1Input").GetComponent<PlayerInputHandler>().isGuarding == true)
+            {
+                //play punch blocked sound
+                audio[3].Play();
             }
         }
     }
@@ -201,6 +233,8 @@ public class Attacking : MonoBehaviour
             player2Anim.SetTrigger("gotHit");
             player1SpecialAttack.AddSpecialBarPoints(20);
             Instantiate(hit, hitPoint.transform);
+            //play audio
+            audio[1].Play();
         }
         else if (playerIndex == 1 && collisionWithEnemy == true && GameObject.FindGameObjectWithTag("player1Input").GetComponent<PlayerInputHandler>().isGuarding == false)
         {
@@ -208,6 +242,17 @@ public class Attacking : MonoBehaviour
             playerAnim.SetTrigger("gotHit");
             player2SpecialAttack.AddSpecialBarPoints(20);
             Instantiate(hit, hitPoint.transform);
+            audio[1].Play();
+        }
+        else if (playerIndex == 0 && collisionWithEnemy == true && GameObject.FindGameObjectWithTag("player2Input").GetComponent<PlayerInputHandler>().isGuarding == true)
+        {
+            //play punch blocked sound
+            audio[3].Play();
+        }
+        else if (playerIndex == 1 && collisionWithEnemy == true && GameObject.FindGameObjectWithTag("player1Input").GetComponent<PlayerInputHandler>().isGuarding == true)
+        {
+            //play punch blocked sound
+            audio[3].Play();
         }
     }
 
@@ -219,6 +264,8 @@ public class Attacking : MonoBehaviour
             player2Anim.SetTrigger("gotHit");
             player1SpecialAttack.AddSpecialBarPoints(30);
             Instantiate(hitHeavy, hitPoint.transform);
+            //play audio
+            audio[2].Play();
         }
         else if (playerIndex == 1 && collisionWithEnemy == true && GameObject.FindGameObjectWithTag("player1Input").GetComponent<PlayerInputHandler>().isGuarding == false)
         {
@@ -226,6 +273,17 @@ public class Attacking : MonoBehaviour
             playerAnim.SetTrigger("gotHit");   
             player2SpecialAttack.AddSpecialBarPoints(30);
             Instantiate(hitHeavy, hitPoint.transform);
+            audio[2].Play();
+        }
+        else if (playerIndex == 0 && collisionWithEnemy == true && GameObject.FindGameObjectWithTag("player2Input").GetComponent<PlayerInputHandler>().isGuarding == true)
+        {
+            //play punch blocked sound
+            audio[3].Play();
+        }
+        else if (playerIndex == 1 && collisionWithEnemy == true && GameObject.FindGameObjectWithTag("player1Input").GetComponent<PlayerInputHandler>().isGuarding == true)
+        {
+            //play punch blocked sound
+            audio[3].Play();
         }
     }
 

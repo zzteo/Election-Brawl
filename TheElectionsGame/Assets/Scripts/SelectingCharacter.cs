@@ -11,6 +11,8 @@ public class SelectingCharacter : MonoBehaviour
     [SerializeField]
     private int playerIndex = 0;
 
+    [SerializeField] AudioSource curtains;
+
     public int GetPlayerIndex()
     {
         return playerIndex;
@@ -19,7 +21,7 @@ public class SelectingCharacter : MonoBehaviour
     private void Start()
     {
         currentSelection = 0;
-        Selecting();
+/*        Selecting();*/
     }
 
     public void Selecting()
@@ -51,17 +53,19 @@ public class SelectingCharacter : MonoBehaviour
     
     private IEnumerator fistCharacter()
     {
+        curtains.Play();
         //waits 1 second before the curtains close and open again while selecting
         yield return new WaitForSeconds(1f);
         transform.GetChild(0).gameObject.SetActive(true);
         transform.GetChild(1).gameObject.SetActive(false);
-    
+     
     }
     private IEnumerator secondCharacter()
     {
+        curtains.Play();
         yield return new WaitForSeconds(1f);
         transform.GetChild(1).gameObject.SetActive(true);
         transform.GetChild(0).gameObject.SetActive(false);
-
+        
     }
 }
